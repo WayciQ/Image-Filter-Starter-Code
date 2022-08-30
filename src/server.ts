@@ -1,9 +1,8 @@
-import express, { Request, Response } from 'express';
-import bodyParser from 'body-parser';
-import { filterImageFromURL, deleteLocalFiles } from './util/util';
+import express, { Request, Response } from "express";
+import bodyParser from "body-parser";
+import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 
 (async () => {
-
   // Init the Express application
   const app = express();
 
@@ -34,14 +33,15 @@ import { filterImageFromURL, deleteLocalFiles } from './util/util';
       return res.status(400).send("image_url is required");
     }
     filterImageFromURL(image_url)
-      .then(filteredpath => {
-        return res.status(200).sendFile(filteredpath, err => {
+      .then((filteredpath) => {
+        return res.status(200).sendFile(filteredpath, (err: any) => {
           if (!err) {
             let filesList: string[] = [filteredpath];
             deleteLocalFiles(filesList);
           }
         });
-      }).catch(() => {
+      })
+      .catch(() => {
         return res.status(422).send("error when processing the image");
       });
   });
@@ -49,10 +49,9 @@ import { filterImageFromURL, deleteLocalFiles } from './util/util';
 
   // Root Endpoint
   // Displays a simple message to the user
-  app.get("/", async (req, res) => {
-    res.send("try GET /filteredimage?image_url={{}}")
+  app.get("/", async (req: Request, res: Response) => {
+    res.send("try GET /filteredimage?image_url={{}}");
   });
-
 
   // Start the Server
   app.listen(port, () => {

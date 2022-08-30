@@ -27,9 +27,9 @@
     "tslint": "^5.18.0",
     "typescript": "^3.5.3"
   },
-  "engines" : { 
-    "npm" : ">=7.0.0",
-    "node" : ">=16.0.0"
+  "engines": {
+    "npm": ">=7.0.0",
+    "node": ">=16.0.0"
   },
   "dependencies": {
     "express": "^4.17.1",
