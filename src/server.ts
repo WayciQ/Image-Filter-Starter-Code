@@ -42,7 +42,7 @@ import { filterImageFromURL, deleteLocalFiles } from "./util/util";
         });
       })
       .catch(() => {
-        return res.status(422).send("error when processing the image");
+        return res.status(422).send("error when filter the image");
       });
   });
   //! END @TODO1
